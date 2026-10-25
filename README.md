@@ -1,43 +1,28 @@
 <div align="center">
 
-# AI Website Cloner Template
+# AI Website Cloner
 
 [![CI](https://github.com/innotelinc/wsclone/actions/workflows/ci.yml/badge.svg)](https://github.com/innotelinc/wsclone/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
+**Give an AI coding agent a URL and get back a clean, editable Next.js app.**
 
-### Clone any website with one command
-
-Give your AI coding agent a URL and watch it recreate the website as a clean Next.js app.
-
-**Best results with [Claude Code](https://docs.anthropic.com/en/docs/claude-code) + Opus 5. Works with Codex, Cursor, Gemini, and more.**
-
-[![Use this template](https://img.shields.io/badge/Use_this_template-Create_your_copy-2ea44f?style=for-the-badge&logo=github&logoColor=white)](https://github.com/JCodesMore/ai-website-cloner-template/generate) [![Discord](https://img.shields.io/badge/Join_the_community-Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/hrTSX5yTpB)
-
-[Quick Start](#quick-start) · [Watch Demo](#demo) · [Supported Platforms](#supported-platforms)
-
-<a href="https://github.com/JCodesMore/ai-website-cloner-template/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT License" /></a> <a href="https://github.com/JCodesMore/ai-website-cloner-template"><img src="https://img.shields.io/github/stars/JCodesMore/ai-website-cloner-template?style=flat" alt="Stars" /></a> <img src="https://img.shields.io/endpoint?url=https://gittokens.rsamf.com/badge/JCodesMore/ai-website-cloner-template" alt="tokens" />
-
-  <a href="https://trendshift.io/repositories/24302?utm_source=repository-badge&amp;utm_medium=badge&amp;utm_campaign=badge-repository-24302" target="_blank" rel="noopener noreferrer"><img src="https://trendshift.io/api/badge/repositories/24302" alt="JCodesMore%2Fai-website-cloner-template | Trendshift" width="250" height="55" /></a> <a href="https://www.star-history.com/jcodesmore/ai-website-cloner-template/"><picture><source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/badge?repo=JCodesMore/ai-website-cloner-template&amp;theme=dark" /><source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/badge?repo=JCodesMore/ai-website-cloner-template" /><img alt="Star History Global Rank" src="https://api.star-history.com/badge?repo=JCodesMore/ai-website-cloner-template" width="216" height="55" /></picture></a>
-
-<br />
-<sub><strong>SPONSORED BY</strong></sub>
-<br /><br />
-<a href="https://www.rapidproxy.io/?ref=JCM"><img src="docs/assets/sponsors/rapidproxy-banner.png" alt="RapidProxy residential proxy service" width="680" /></a>
-<br />
-<sub>Power your scraping and automation with 90M+ residential IPs, 500MB free traffic, and non-expiring bandwidth. <a href="https://www.rapidproxy.io/?ref=JCM">Explore RapidProxy →</a></sub>
-<br /><br />
-<a href="https://www.atlascloud.ai/?utm_source=github&amp;utm_medium=sponsor&amp;utm_campaign=ai-website-cloner-template">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="docs/assets/sponsors/atlas-cloud-logo-white.svg" />
-    <source media="(prefers-color-scheme: light)" srcset="docs/assets/sponsors/atlas-cloud-logo.svg" />
-    <img src="docs/assets/sponsors/atlas-cloud-logo.svg" alt="Atlas Cloud" width="240" />
-  </picture>
-</a>
-<br />
-<sub>Generate AI images, video, audio, and 3D assets through one API. <a href="https://www.atlascloud.ai/?utm_source=github&amp;utm_medium=sponsor&amp;utm_campaign=ai-website-cloner-template">Explore Atlas Cloud →</a></sub>
+[Landing page](https://innotelinc.github.io/wsclone/) · [Quick start](#quick-start) · [Supported agents](#supported-agents)
 
 </div>
+
+> **AI Website Cloner** is the BuilderOps template that turns a live website into
+> a Next.js 16 repository a person can read and maintain: a pre-scaffolded
+> Next.js + shadcn/ui + Tailwind v4 app plus the `/clone-website` skill that
+> walks the target, extracts its design tokens and rebuilds each section as a
+> component.
+>
+> It is a maintained copy of
+> [JCodesMore/ai-website-cloner-template](https://github.com/JCodesMore/ai-website-cloner-template)
+> (MIT, copyright retained there); this repository keeps the template and its
+> skills in the Innotel workspace. It consumes an AI coding agent and the
+> target's public pages, and — where it is hosted — Cerulean Vault for secrets.
+> Landing page: [innotelinc.github.io/wsclone](https://innotelinc.github.io/wsclone/).
 
 ---
 
@@ -47,89 +32,80 @@ Give your AI coding agent a URL and watch it recreate the website as a clean Nex
 | --- | --- |
 | Rebuilding a site by hand is slow. | An agent walks the pages and writes the components. |
 | A cloned site is usually a mess. | The output is a small Next.js app with a structure a person can edit. |
+| One agent tries to hold the whole site in context. | The pipeline writes component specs first, then parallel builder agents build each section in its own worktree. |
+| "Close enough" drifts from the original. | Assembly runs a visual diff against the target before the page is wired up. |
 
 Its place in the stack is [docs/stack.md](docs/stack.md); the canonical
 definition of the shared layers is the
 [Innotel Platform Stack](https://github.com/innotelinc/innotel-platform-stack).
 
-## Demo
+## What it is
 
-[![Watch the demo](docs/design-references/comparison.png)](https://youtu.be/O669pVZ_qr0)
+- **A template, not a service** — the Next.js 16 app, `AGENTS.md` rules and the
+  `/clone-website` skill, ready to copy per site.
+- **A five-phase pipeline** — reconnaissance, foundation, component specs,
+  parallel build in git worktrees, assembly and visual QA.
+- **Multi-agent by construction** — the skill is generated for Claude Code,
+  Codex CLI, OpenCode, Copilot, Cursor, Windsurf, Gemini CLI, Cline, Roo Code,
+  Continue, Amazon Q and Augment Code from one source.
+- **A typed base** — Next.js 16 App Router, React 19, TypeScript strict,
+  shadcn/ui primitives, Tailwind CSS v4 tokens and Lucide icons to replace.
+- **Containers when you want them** — a dev image and a multi-stage production
+  build in `docker-compose.yml`.
 
-> Click the image above to watch the full demo on YouTube.
+## Quick start
 
-## Quick Start
+> Make your own copy first — do not build a site in this repository.
 
-> **Important:** Start by making your own copy with GitHub's **Use this template** button. Do not clone this template repository directly for your website project, and do not open pull requests here with your generated website.
-
-1. **Create your own repository from this template**
-
-   On the GitHub page for this project, click **Use this template**, then click **Create a new repository**.
-
-   Give your new repository a name, choose whether it should be public or private, then click **Create repository**. If GitHub shows an **Include all branches** option, you can leave it off.
-
-   This gives you your own separate project to work in, so your website changes stay in your account instead of coming back to the main template.
-
-2. **Open your new repository on your computer**
-
-   After GitHub creates your copy, open that new repository. Click **Code** and open or clone your new repository with your preferred coding tool.
-
-   If you use the terminal, the command will look like this:
+1. **Create your copy** with GitHub's **Use this template** button on
+   [innotelinc/wsclone](https://github.com/innotelinc/wsclone/generate).
+2. **Clone your copy** and install dependencies:
 
    ```bash
    git clone https://github.com/YOUR-USERNAME/YOUR-NEW-REPOSITORY.git
    cd YOUR-NEW-REPOSITORY
-   ```
-
-3. **Install dependencies**
-   ```bash
    npm install
    ```
-4. **Start your AI agent** — Claude Code recommended:
+
+3. **Start your agent** — Claude Code is the recommended client:
+
    ```bash
    claude --chrome
    ```
-5. **Run the skill**:
+
+4. **Run the skill** with one or more target URLs:
+
    ```
    /clone-website <target-url1> [<target-url2> ...]
    ```
-6. **Customize** (optional) — after the base clone is built, modify as needed
 
-> Most supported clients expose `/clone-website` directly. If your client activates skills from natural-language requests, enter `Clone <target-url> using the clone-website workflow`. Project instructions are in `AGENTS.md`.
+5. **Customize** once the base clone is built.
 
-## Supported Platforms
+Clients that activate skills from natural-language requests can use
+`Clone <target-url> using the clone-website workflow`. Project instructions live
+in [AGENTS.md](AGENTS.md).
 
-| Agent                                                         | Status                     |
-| ------------------------------------------------------------- | -------------------------- |
-| [Claude Code](https://docs.anthropic.com/en/docs/claude-code) | **Recommended** — Opus 5   |
-| [Codex CLI](https://github.com/openai/codex)                  | Supported                  |
-| [OpenCode](https://opencode.ai/)                              | Supported                  |
-| [GitHub Copilot](https://github.com/features/copilot)         | Supported                  |
-| [Kiro](https://kiro.dev/)                                    | Supported                  |
-| [Cursor](https://cursor.com/)                                 | Supported                  |
-| [Windsurf](https://codeium.com/windsurf)                      | Supported                  |
-| [Gemini CLI](https://github.com/google-gemini/gemini-cli)     | Supported                  |
-| [Cline](https://github.com/cline/cline)                       | Supported                  |
-| [Roo Code](https://github.com/RooCodeInc/Roo-Code)            | Supported                  |
-| [Continue](https://continue.dev/)                             | Supported                  |
-| [Amazon Q](https://aws.amazon.com/q/developer/)               | Supported                  |
-| [Augment Code](https://www.augmentcode.com/)                  | Supported                  |
+## Supported agents
 
-## Prerequisites
+| Agent | Status |
+| --- | --- |
+| [Claude Code](https://docs.anthropic.com/en/docs/claude-code) | **Recommended** |
+| [Codex CLI](https://github.com/openai/codex) | Supported |
+| [OpenCode](https://opencode.ai/) | Supported |
+| [GitHub Copilot](https://github.com/features/copilot) | Supported |
+| [Kiro](https://kiro.dev/) | Supported |
+| [Cursor](https://cursor.com/) | Supported |
+| [Windsurf](https://codeium.com/windsurf) | Supported |
+| [Gemini CLI](https://github.com/google-gemini/gemini-cli) | Supported |
+| [Cline](https://github.com/cline/cline) | Supported |
+| [Roo Code](https://github.com/RooCodeInc/Roo-Code) | Supported |
+| [Continue](https://continue.dev/) | Supported |
+| [Amazon Q](https://aws.amazon.com/q/developer/) | Supported |
+| [Augment Code](https://www.augmentcode.com/) | Supported |
 
-- [Node.js](https://nodejs.org/) 24+
-- An AI coding agent (see [Supported Platforms](#supported-platforms))
+Node.js 24 or newer is required; `.nvmrc` pins it.
 
-## Tech Stack
-
-- **Next.js 16** — App Router, React 19, TypeScript strict
-- **shadcn/ui** — Radix primitives + Tailwind CSS v4
-- **Tailwind CSS v4** — oklch design tokens
-- **Lucide React** — default icons (replaced by extracted SVGs during cloning)
-
-## How It Works
-
-The `/clone-website` skill runs a multi-phase pipeline:
+## How it works
 
 ```mermaid
 flowchart LR
@@ -139,91 +115,98 @@ flowchart LR
     P4 --> P5["5. Assembly and QA"]
 ```
 
-1. **Reconnaissance** — screenshots, design token extraction, interaction sweep (scroll, click, hover, responsive)
-2. **Foundation** — updates fonts, colors, globals, downloads all assets
-3. **Component Specs** — writes detailed spec files (`docs/research/components/`) with exact computed CSS values, states, behaviors, and content
-4. **Parallel Build** — dispatches builder agents in git worktrees, one per section/component
-5. **Assembly & QA** — merges worktrees, wires up the page, runs visual diff against the original
+1. **Reconnaissance** — screenshots, design-token extraction and an interaction
+   sweep (scroll, click, hover, responsive breakpoints).
+2. **Foundation** — fonts, colours, globals and every asset downloaded.
+3. **Component specs** — one spec per section with exact `getComputedStyle()`
+   values, states, behaviour and content (`docs/research/components/`).
+4. **Parallel build** — builder agents work in git worktrees, one per section.
+5. **Assembly and QA** — the worktrees are merged, the page wired up and a
+   visual diff run against the original.
 
-Each builder agent receives the full component specification inline — exact `getComputedStyle()` values, interaction models, multi-state content, responsive breakpoints, and asset paths. No guessing.
+Each builder receives its spec inline, so it is not guessing at spacing, states
+or breakpoints.
 
-## Use Cases
-
-- **Platform migration** — rebuild a site you own from WordPress/Webflow/Squarespace into a modern Next.js codebase
-- **Lost source code** — your site is live but the repo is gone, the developer left, or the stack is legacy. Get the code back in a modern format
-- **Learning** — deconstruct how production sites achieve specific layouts, animations, and responsive behavior by working with real code
-
-## Not Intended For
-
-- **Phishing or impersonation** — this project must not be used for deceptive purposes, impersonation, or any activity that breaks the law.
-- **Passing off someone's design as your own** — logos, brand assets, and original copy belong to their owners.
-- **Violating terms of service** — some sites explicitly prohibit scraping or reproduction. Check first.
-
-## Project Structure
+## Project structure
 
 ```
 src/
-  app/              # Next.js routes
-  components/       # React components
-    ui/             # shadcn/ui primitives
-    icons.tsx       # Extracted SVG icons
-  lib/utils.ts      # cn() utility
-  types/            # TypeScript interfaces
-  hooks/            # Custom React hooks
+  app/                 # Next.js routes
+  components/          # React components
+    ui/                # shadcn/ui primitives
+    icons.tsx          # Extracted SVG icons
+  lib/utils.ts         # cn() utility
+  types/               # TypeScript interfaces
+  hooks/               # Custom React hooks
 public/
-  images/           # Downloaded images from target
-  videos/           # Downloaded videos from target
-  seo/              # Favicons, OG images
+  images/              # Downloaded images from the target
+  videos/              # Downloaded videos from the target
+  seo/                 # Favicons, OG images
 docs/
-  research/         # Extraction output & component specs
-  design-references/ # Screenshots
+  research/            # Extraction output and component specs
+  design-references/   # Screenshots
 scripts/
   sync-agent-rules.sh  # Regenerate agent instruction files
-  sync-skills.mjs      # Regenerate /clone-website for all platforms
-.kiro/skills/          # Generated Kiro workspace skill
-.cline/skills/         # Generated Cline workspace skill
-.roo/skills/           # Generated Roo Code workspace skill
-.roo/commands/         # Generated Roo Code slash command
-AGENTS.md           # Agent instructions (single source of truth)
-CLAUDE.md           # Claude Code config (imports AGENTS.md)
-GEMINI.md           # Gemini CLI config (imports AGENTS.md)
+  sync-skills.mjs      # Regenerate /clone-website for every client
+AGENTS.md              # Agent instructions (single source of truth)
+CLAUDE.md              # Claude Code config (imports AGENTS.md)
+GEMINI.md              # Gemini CLI config (imports AGENTS.md)
 ```
 
 ## Commands
 
 ```bash
-npm run dev    # Start dev server
-npm run build  # Production build
-npm run lint   # ESLint check
-npm run typecheck # TypeScript check
-npm run check  # Run lint + typecheck + build
+npm run dev        # Start dev server
+npm run build      # Production build
+npm run lint       # ESLint check
+npm run typecheck  # TypeScript check
+npm run check      # lint + typecheck + build
 ```
 
-### If using docker
+With Docker:
 
 ```bash
-docker compose up app --build # build and run the app
-docker compose up dev --build # run the app in dev mode on port 3001
+docker compose up app --build   # production build
+docker compose up dev --build   # dev mode on port 3001
 ```
 
-## Updating for Other Platforms
+Two source files drive every client adapter; edit the source, then regenerate:
 
-Two source-of-truth files power all platform support. Edit the source, then run the sync script:
+| What | Source of truth | Regenerate with |
+| --- | --- | --- |
+| Project instructions | `AGENTS.md` | `bash scripts/sync-agent-rules.sh` |
+| `/clone-website` skill | `.claude/skills/clone-website/SKILL.md` | `node scripts/sync-skills.mjs` |
 
-| What                   | Source of truth                         | Sync command                       |
-| ---------------------- | --------------------------------------- | ---------------------------------- |
-| Project instructions   | `AGENTS.md`                             | `bash scripts/sync-agent-rules.sh` |
-| `/clone-website` skill | `.claude/skills/clone-website/SKILL.md` | `node scripts/sync-skills.mjs`     |
+## Use cases, and what this is not for
 
-Each script regenerates the platform-specific copies automatically. Agents that read the source files natively need no regeneration.
+Built for platform migrations you own, recovering a site whose source is gone,
+and learning how production sites are put together from real code.
 
+Not for phishing or impersonation, passing off someone else's design as your
+own, or any target whose terms forbid scraping. Logos, brand assets and original
+copy belong to their owners.
 
-## Star History
+## Documentation
 
-![Star History Chart](docs/assets/star-history.png)
+| Document | Covers |
+| --- | --- |
+| [docs/stack.md](docs/stack.md) | The template's role in the Innotel Platform Stack — owns / consumes boundaries |
+| [AGENTS.md](AGENTS.md) | The rules every supported agent follows |
+| [CONTRIBUTING.md](CONTRIBUTING.md) | Contribution flow and local checks |
+| [SECURITY.md](SECURITY.md) | Private vulnerability reporting |
+| [CHANGELOG.md](CHANGELOG.md) | Release history, including the upstream 0.4.0 baseline |
+| [README.ja.md](README.ja.md) · [README.zh-CN.md](README.zh-CN.md) | Japanese and Simplified Chinese translations |
 
 ## License
 
-MIT
+MIT — see [LICENSE](LICENSE). The licence and copyright of the upstream
+template ([JCodesMore/ai-website-cloner-template](https://github.com/JCodesMore/ai-website-cloner-template),
+© 2025 JCodesMore) are retained unchanged; this repository's additions are
+released under the same terms.
 
-<sub>Translations: <a href="README.ja.md">日本語</a> · <a href="README.zh-CN.md">Simplified Chinese</a></sub>
+---
+
+© 2026 Innotel — AI Website Cloner, BuilderOps. Part of the
+[Innotel Platform Stack](https://github.com/innotelinc/innotel-platform-stack) ·
+[GitHub](https://github.com/innotelinc/wsclone) ·
+[Landing](https://innotelinc.github.io/wsclone/)

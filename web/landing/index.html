@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AI Website Cloner — BuilderOps</title>
-  <meta name="description" content="Clone any website into a clean Next.js app, with an AI coding agent.">
+  <meta name="description" content="Give an AI coding agent a URL and get back a clean, editable Next.js app — the BuilderOps website-cloner template from the Innotel Platform Stack.">
   <meta property="og:title" content="AI Website Cloner — BuilderOps">
-  <meta property="og:description" content="Clone any website into a clean Next.js app, with an AI coding agent.">
+  <meta property="og:description" content="Give an AI coding agent a URL and get back a clean, editable Next.js app.">
   <meta property="og:type" content="website">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0d10'/%3E%3Ctext x='32' y='44' font-size='32' text-anchor='middle' fill='%232ea44f'%3EW%3C/text%3E%3C/svg%3E">
   <style>
@@ -46,14 +46,15 @@
       </nav>
     </header>
     <main>
-      <p class="kicker">BuilderOps · self-hosted</p>
-      <h1>AI Website Cloner — <span>Clone any website into a clean Next.js app, with an AI coding agent.</span></h1>
-      <p class="lede">The website-cloner template kept in the Innotel workspace: a URL and an AI coding agent produce a clean, editable Next.js app.</p>
+      <p class="kicker">BuilderOps · template</p>
+      <h1>AI Website Cloner — <span>give your agent a URL, get an editable Next.js app.</span></h1>
+      <p class="lede">A pre-scaffolded Next.js 16 + shadcn/ui + Tailwind v4 app and the <code>/clone-website</code> skill: the agent walks the target, extracts its design tokens, writes a spec per section and rebuilds each one as a component you can edit.</p>
       <div class="cta">
-        <a class="btn primary" href="https://github.com/innotelinc/wsclone">View on GitHub</a>
+        <a class="btn primary" href="https://github.com/innotelinc/wsclone/generate">Use this template</a>
         <a class="btn" href="https://github.com/innotelinc/wsclone/blob/main/README.md">Quick start</a>
       </div>
-      <pre><code>npm install</code></pre>
+      <pre><code>npm install
+/clone-website &lt;target-url&gt;</code></pre>
       <div class="grid">
       <article class="card">
         <h3>Rebuilding a site by hand is slow.</h3>
@@ -63,9 +64,21 @@
         <h3>A cloned site is usually a mess.</h3>
         <p>The output is a small Next.js app with a structure a person can edit.</p>
       </article>
+      <article class="card">
+        <h3>Builders in parallel, not one agent guessing.</h3>
+        <p>Component specs are written first; each section is built in its own git worktree.</p>
+      </article>
+      <article class="card">
+        <h3>Close enough drifts.</h3>
+        <p>Assembly runs a visual diff against the target before the page is wired up.</p>
+      </article>
+      <article class="card">
+        <h3>Any agent, one skill.</h3>
+        <p>Claude Code, Codex CLI, Cursor, Gemini CLI, Cline, Roo Code and more, generated from one source.</p>
+      </article>
       </div>
     </main>
-    <footer>Part of the <a href="https://github.com/innotelinc/innotel-platform-stack">Innotel Platform Stack</a>. © 2026 Innotel Inc.</footer>
+    <footer>MIT · upstream <a href="https://github.com/JCodesMore/ai-website-cloner-template">template</a> retained · part of the <a href="https://github.com/innotelinc/innotel-platform-stack">Innotel Platform Stack</a>. © 2026 Innotel Inc.</footer>
   </div>
 </body>
 </html>
